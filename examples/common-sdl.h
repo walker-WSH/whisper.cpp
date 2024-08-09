@@ -8,6 +8,10 @@
 #include <vector>
 #include <mutex>
 
+#pragma comment(lib,"D:\\workspace\\whisper.cpp\\SDL2-2.30.6\\lib\\x64\\SDL2.lib")
+#pragma comment(lib,"D:\\workspace\\whisper.cpp\\SDL2-2.30.6\\lib\\x64\\SDL2main.lib")
+
+
 //
 // SDL Audio capture
 //

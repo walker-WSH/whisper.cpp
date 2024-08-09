@@ -111,7 +111,21 @@ void whisper_print_usage(int /*argc*/, char ** argv, const whisper_params & para
     fprintf(stderr, "  -fa,      --flash-attn    [%-7s] flash attention during inference\n",               params.flash_attn ? "true" : "false");
     fprintf(stderr, "\n");
 }
+#include <iostream>
+#include <string>
+#include <codecvt>
+#include <locale>
 
+// 函数将 UTF-8 字符串转换为 UTF-16 字符串
+std::wstring utf8_to_utf16(const std::string& utf8_str) {
+    // 创建一个转换器，将 UTF-8 转换为 UTF-16
+    std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
+
+    // 使用转换器将 UTF-8 字符串转换为 UTF-16 字符串
+    std::wstring utf16_str = converter.from_bytes(utf8_str);
+
+    return utf16_str;
+}
 int main(int argc, char ** argv) {
     whisper_params params;
 
@@ -349,6 +363,7 @@ int main(int argc, char ** argv) {
                     const char * text = whisper_full_get_segment_text(ctx, i);
 
                     if (params.no_timestamps) {
+                        auto str = utf8_to_utf16(text);
                         printf("%s", text);
                         fflush(stdout);
 

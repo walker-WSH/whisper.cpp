@@ -1,4 +1,4 @@
-#include "whisper.h"
+﻿#include "whisper.h"
 
 #ifdef WHISPER_USE_COREML
 #include "coreml/whisper-encoder.h"

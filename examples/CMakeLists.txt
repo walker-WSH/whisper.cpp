@@ -4,15 +4,11 @@ find_package(Threads REQUIRED)
 
 # third-party
 
-if (WHISPER_SDL2)
-    # SDL2
-    find_package(SDL2 REQUIRED)
+list(APPEND CMAKE_MODULE_PATH "D:/workspace/whisper.cpp/SDL2-2.30.6/cmake")
+list(APPEND CMAKE_MODULE_PATH "D:/workspace/whisper.cpp/SDL2-2.30.6")
 
-    string(STRIP "${SDL2_LIBRARIES}" SDL2_LIBRARIES)
-
-    message(STATUS "SDL2_INCLUDE_DIRS = ${SDL2_INCLUDE_DIRS}")
-    message(STATUS "SDL2_LIBRARIES    = ${SDL2_LIBRARIES}")
-endif()
+set(SDL2_INCLUDE_DIRS "D:\\workspace\\whisper.cpp\\SDL2-2.30.6\\include")
+set(SDL2_LIBRARIES "D:\\workspace\\whisper.cpp\\SDL2-2.30.6\\lib\\x64")
 
 if (WHISPER_CLBLAST)
     find_package(CLBlast REQUIRED)
